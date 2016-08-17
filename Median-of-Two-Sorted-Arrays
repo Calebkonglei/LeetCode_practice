@@ -1,0 +1,23 @@
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number}
+ */
+var findMedianSortedArrays = function(nums1, nums2) {
+    if(Object.prototype.toString.call(nums1).slice(8,-1) =='Array' && Object.prototype.toString.call(nums2).slice(8,-1) == 'Array'){
+        var arr=nums1.concat(nums2);
+        var len=arr.length;
+        arr.sort(function(a,b){
+            return a-b;
+        });
+        if(len%2==0){
+            var index=len/2;
+            return (arr[index-1]+arr[index])/2;
+        }else{
+            var index=Math.floor(len/2);
+            return arr[index];
+        }
+    }else{
+        return '你不是数组，抱歉';
+    }
+};
