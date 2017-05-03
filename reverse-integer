@@ -3,7 +3,7 @@
  * @return {number}
  */
 var reverse = function(x) {
-    var x = x.toString(), new_value = '', bound = parseInt(0x7fffffff, 10); 
+    var x = x.toString(), new_value = '', bound = Math.pow(2,31)-1; 
     if(x.length == 1){
         return Number(x);
     }
