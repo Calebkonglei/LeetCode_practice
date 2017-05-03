@@ -3,7 +3,22 @@
  * @return {number}
  */
 var reverse = function(x) {
-    var num=parseInt(x.toString().split("").reverse().join(""));
-    if(num>(Math.pow(2,31)-1)) return 0;//如果超出整形范围，返回0
-    return x>0?num:0-num;
+    var x = x.toString(), new_value = '', bound = parseInt(0x7fffffff, 10); 
+    if(x.length == 1){
+        return Number(x);
+    }
+    if(Number(x)>0){
+        for(var i=x.length; i>=0;i--){
+            new_value += x.substring(i, i+1);
+        };
+        return Number(new_value) >= bound ? 0 : Number(new_value);
+    } 
+    if(Number(x)<0){
+        new_value += x.substring(0,1);
+        for(var i=x.length; i>0; i--){
+            new_value += x.substring(i,i+1)
+        }
+        return Number(new_value) <= -bound ? 0 : Number(new_value);
+    }
 };
+
