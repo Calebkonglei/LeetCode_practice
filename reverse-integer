@@ -3,22 +3,16 @@
  * @return {number}
  */
 var reverse = function(x) {
-    var x = x.toString(), new_value = '', bound = Math.pow(2,31)-1; 
+    var num = x.toString(), new_value = '', bound = Math.pow(2,31)-1; 
     if(x.length == 1){
         return Number(x);
     }
-    if(Number(x)>0){
-        for(var i=x.length; i>=0;i--){
-            new_value += x.substring(i, i+1);
-        };
-        return Number(new_value) >= bound ? 0 : Number(new_value);
-    } 
-    if(Number(x)<0){
-        new_value += x.substring(0,1);
-        for(var i=x.length; i>0; i--){
-            new_value += x.substring(i,i+1)
-        }
-        return Number(new_value) <= -bound ? 0 : Number(new_value);
+    for(var i=num.length; i>=0;i--){
+        new_value += num.substring(i, i+1);
+    };
+    if(parseInt(new_value) > bound){
+        return 0
     }
+    return x > 0 ? parseInt(new_value) : -parseInt(new_value);
 };
 
